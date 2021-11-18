@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center " *ngIf="!books.length" style="height: 500px">
+    <mat-spinner></mat-spinner>
+  </div>
+  <!--  <div *ngIf="!books.length"> Loading  </div>-->
+  <div class="row" *ngIf="books.length">
+    <mat-card class="col-lg-4 col-xl-4 col-md-6 col-sm-12 p-3" *ngFor="let book of books">
+      <div class="p-3 frame">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{book.title}}</mat-card-title>
+          <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://www.blogphongthuy.com/wp-content/uploads/2015/03/con-ong.jpg">
+        <mat-card-content>
+          <h6>
+            {{book.content}}
+          </h6>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="justify-content-center d-flex">
+            <button mat-raised-button color="warn" (click)="openPreview($event)">Preview</button>
+            <button mat-raised-button (click)="openDialog()" color="primary">Read</button>
+            <button mat-raised-button color="accent">Favourite</button>
+          </div>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+
+  </div>
+</div>

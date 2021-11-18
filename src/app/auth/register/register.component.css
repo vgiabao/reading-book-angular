@@ -1,0 +1,15 @@
+.form-container{
+  min-width: 300px;
+  min-height: 300px;
+
+}
+
+input{
+  height: 20px;
+}
+.example-card {
+  max-width: 400px;
+}
+.frame{
+  box-shadow: 5px 10px 15px #b1afaf;
+}

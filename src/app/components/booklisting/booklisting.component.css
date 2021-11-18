@@ -1,0 +1,10 @@
+.example-card {
+  max-width: 300px;
+}
+.frame{
+  box-shadow: 5px 10px 15px #b1afaf;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #010150!important;
+}

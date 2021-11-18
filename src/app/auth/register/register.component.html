@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center align-items-center flex-column mt-5 container">
+  <div class="col-4 d-flex justify-content-center  flex-column mt-5 p-3 frame">
+    <h3 class="text-center" style="color:#010150; font-weight: bold"> Register  </h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input [formControl]="email" matInput placeholder="Enter Your Email">
+      <mat-hint>example@gmail.com</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input [formControl]="password" matInput placeholder="Enter Your Password">
+      <mat-hint>example: Abc@123.</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input [formControl]="reInputPassword" matInput placeholder="Confirm Your Password">
+    </mat-form-field>
+    <div class="col-12 d-flex justify-content-center align-item-center">
+      <button (click)="onRegister()" mat-raised-button color="primary">Register</button>
+    </div>
+    <mat-error class="text-center my-2" *ngIf="err">{{getErrorMessage()}}</mat-error>
+  </div>
+
+
+</div>
