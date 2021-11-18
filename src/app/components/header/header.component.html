@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent ">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto " >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
         <li class="nav-item" *ngIf="!user">
           <a class="nav-link active" aria-current="page" href="/login">Login</a>
         </li>
@@ -16,7 +16,7 @@
 
       </ul>
 
-        <div class="example-button-container d-flex">
+        <div class="example-button-container d-flex" *ngIf="user">
           <button mat-fab color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>home</mat-icon>
           </button>

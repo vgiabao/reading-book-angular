@@ -1,7 +1,7 @@
 <div class="container frame mt-3">
   <div class="row">
   <div class="col-lg-3 col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center flex-column">
-  <img src="https://cdn.icon-icons.com/icons2/2468/PNG/512/user_icon_149329.png">
+  <img src="https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg">
     <h2 class="text-center"> User Information</h2>
     <div *ngIf="user">
     <h4 class="text-center"> Email:  {{user.email}} </h4>
@@ -11,7 +11,7 @@
   <div class="col-lg-9 col-xl-8 col-md-6 col-sm-12 book-area" *ngIf="user && user.roles=='admin'">
     <div class="d-flex justify-content-center w-100">
     <mat-tab-group class="w-100">
-      <mat-tab label="Add & Update Books"> Add & Update Books </mat-tab>
+      <mat-tab label="Add & Update Books"> <app-book-profile></app-book-profile> </mat-tab>
       <mat-tab label="Manage Users"> Manage Users </mat-tab>
       <mat-tab label="Reading"> Reading </mat-tab>
       <mat-tab label="Favourite"> Favourite </mat-tab>

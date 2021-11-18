@@ -7,7 +7,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { BooklistingComponent } from './components/booklisting/booklisting.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatTableModule} from "@angular/material/table";
 // material components
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -22,6 +22,7 @@ import {AuthModule} from "./auth/auth.module";
 import {MatMenuModule} from "@angular/material/menu";
 import { ProfileComponent } from './profile/profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {BookProfileComponent, UpdateBookDialog} from './components/book-profile/book-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     UserProfileComponent,
     DialogRequestLogin,
     ProfileComponent,
-
+    BookProfileComponent,
+    UpdateBookDialog
   ],
   imports: [
     MatCardModule,
@@ -48,7 +50,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     AuthModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
 
   ],
   providers: [],
