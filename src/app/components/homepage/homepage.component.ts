@@ -12,15 +12,7 @@ export class HomepageComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.getCurrentUser();
-  }
-  getCurrentUser(){
-    const token = localStorage.getItem('access_tokens')
-    if (token) this.authService.fetchCurrentUser(token).subscribe(user => {
-      this.user = user;
-      console.log(this.user)
-    })
-
+    this.authService.currentUser.subscribe(user => this.user = user)
   }
 
 }

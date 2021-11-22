@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Book} from "../../Book";
 import {BookListingService} from "../../book-listing.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 export interface BookFormat {
   id: number;
@@ -23,7 +24,7 @@ export interface BookFormat {
 export class BookProfileComponent implements OnInit {
   public books ?: Book[];
 
-  displayedColumns = ['id', 'title', 'roles', 'author', 'cover']
+  displayedColumns = [ 'title', 'roles', 'author', 'cover']
   constructor(private bookListingService: BookListingService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -49,13 +50,39 @@ export class BookProfileComponent implements OnInit {
   templateUrl: 'update-book-dialog.html',
 })
 export class UpdateBookDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  title = new FormControl();
+  author = new FormControl();
+  id  = 0;
+  cover = new FormControl();
+  content = new FormControl();
+  roles = new FormControl();
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private bookListingService: BookListingService) {
     this.data=data.value;
   }
 
 
   ngOnInit() {
-    console.log(this.data)
     // will log the entire data object
+    this.title.setValue(this.data.title)
+    this.author.setValue(this.data.author)
+    this.id = this.data.id
+    this.cover.setValue(this.data.cover)
+    this.content.setValue(this.data.content)
+    this.roles.setValue(this.data.roles)
+
+  }
+  async onUpdateClick(){
+    const book: Book =  {
+      title: this.title.value,
+      author: this.author.value,
+      id: this.id,
+      cover: this.cover.value,
+      content: this.content.value,
+      roles: this.roles.value
+    }
+    console.log("update click")
+    await this.bookListingService.updateBook(book)
+    window.location.reload()
   }
 }

@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import {Book} from "./Book";
 import {Observable, of} from "rxjs";
 import {constant} from "../assets/constant";
 import {catchError, map, tap} from 'rxjs/operators';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookListingService {
+  public books ?:Book[];
 
   constructor(private http: HttpClient) {}
   getBooks(): Observable<Book[]>{
@@ -33,5 +34,14 @@ export class BookListingService {
   }
   private log(message: string) {
     console.log(`HeroService: ${message}`);
+  }
+  async updateBook(book: Book){
+    console.log('book from service' , book)
+    const token = localStorage.getItem("access_tokens")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    await this.http.put(constant.updateBook, book, {headers}).subscribe(res => console.log(res));
   }
 }

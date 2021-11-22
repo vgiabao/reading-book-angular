@@ -7,12 +7,14 @@
     <h4 class="text-center"> Email:  {{user.email}} </h4>
     <h4 class="text-center"> Roles: {{user.roles}} </h4>
     </div>
-  </div>
+    <div  *ngIf="user && user.roles=='admin'" class="d-flex justify-content-center">
+      <button mat-raised-button color="primary"> + Add New Book</button>
+    </div>
+    </div>
   <div class="col-lg-9 col-xl-8 col-md-6 col-sm-12 book-area" *ngIf="user && user.roles=='admin'">
     <div class="d-flex justify-content-center w-100">
     <mat-tab-group class="w-100">
       <mat-tab label="Add & Update Books"> <app-book-profile></app-book-profile> </mat-tab>
-      <mat-tab label="Manage Users"> Manage Users </mat-tab>
       <mat-tab label="Reading"> Reading </mat-tab>
       <mat-tab label="Favourite"> Favourite </mat-tab>
       <mat-tab label="Read"> Read </mat-tab>

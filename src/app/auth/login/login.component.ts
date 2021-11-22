@@ -38,14 +38,7 @@ export class LoginComponent implements OnInit {
   async onLogin(){
      this.getErrorMessage()
     if (!this.err){
-       await this.authService.signIn(this.email.value, this.password.value).subscribe(info => {
-         this.token = info.access_tokens;
-         this.uEmail = info.email;
-
-         localStorage.setItem("access_tokens", info.access_tokens);
-         localStorage.setItem('email', info.email);
-       })
-
+       await this.authService.signIn(this.email.value, this.password.value)
        this.router.navigateByUrl('/');
     }
   }

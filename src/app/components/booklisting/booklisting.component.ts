@@ -6,6 +6,7 @@ import {Book} from "../../Book";
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from "@angular/router";
 import {User} from "../../User";
+import {AuthService} from "../../auth.service";
 
 @Component({
   selector: 'app-booklisting',
@@ -13,13 +14,14 @@ import {User} from "../../User";
   styleUrls: ['./booklisting.component.css']
 })
 export class BooklistingComponent implements OnInit {
-  @Input() user ?: User;
+  user ?: User;
   books: Book[] = []
 
-  constructor(private bookListingService: BookListingService, public dialog: MatDialog) {
+  constructor(private bookListingService: BookListingService, public dialog: MatDialog, private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    this.authService.currentUser.subscribe(data => this.user = data)
     this.getBooks()
   }
 
@@ -29,7 +31,7 @@ export class BooklistingComponent implements OnInit {
   }
 
   openDialog() {
-    if (!this.user) {
+    if (JSON.stringify(this.user) === JSON.stringify({})) {
       const dialogRef = this.dialog.open(DialogRequestLogin);
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);

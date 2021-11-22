@@ -26,3 +26,6 @@
 .mat-row:hover .mat-cell {
   border-color: currentColor;
 }
+.table-height{
+  max-height: 80vh;
+}

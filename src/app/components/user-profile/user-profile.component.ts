@@ -9,22 +9,13 @@ import {AuthService} from "../../auth.service";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user?:User
+  user?:any
   constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    if (!history.state.email) this.getCurrentUser();
-    else this.user = history.state
-
+    this.authService.currentUser.subscribe((user: any) => this.user = user)
+    console.log('user from profile', this.user)
   }
-  getCurrentUser(){
-    const token = localStorage.getItem('access_tokens')
-    if (token) this.authService.fetchCurrentUser(token).subscribe(user => {
-      this.user = user;
-      console.log(this.user)
-    })
-    console.log("token")
 
-  }
 }

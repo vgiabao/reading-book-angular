@@ -1,15 +1,74 @@
 
 <h2 mat-dialog-title>Update Book</h2>
+<hr/>
 <mat-dialog-content class="mat-typography">
-
-  <h4> You need to login before read our resource!</h4>
-  <h4> You need to login before read our resource!</h4>
-  <h4>Title: {{data.title}}</h4>
-  <h4> Author: {{data.author}} </h4>
-  <h4> You need to login before read our resource!</h4>
+  <h2> Book Information </h2>
+<!-- ID -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+      <h4 class="m-0">ID :</h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+      <h4 class="m-0"> {{id}} </h4>
+    </div>
+  </div>
+<!--  -->
+<!--  title -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+    <h4 class="m-0">Title :</h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+    <input [formControl]="title" matInput placeholder="Enter Your Email">
+    </div>
+    </div>
+<!-- author -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+      <h4 class="m-0">Author: </h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+      <input [formControl]="author" matInput placeholder="Enter Your Email">
+    </div>
+  </div>
+<!-- -->
+<!-- type -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+      <h4 class="m-0">Type: </h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+      <input [formControl]="roles" matInput placeholder="Enter Your Email">
+    </div>
+  </div>
+<!-- cover -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+      <h4 class="m-0">Cover: </h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+      <input [formControl]="cover" matInput placeholder="Enter Your Email">
+    </div>
+  </div>
+<!-- content -->
+  <div class="d-flex flex-row align-items-center container py-2" >
+    <div class="col-lg-4 col-md-4 col-xl-4 col-sm-12">
+      <h4 class="m-0">Content: </h4>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12">
+      <textarea [formControl]="content" matInput placeholder="Enter Your Email"></textarea>
+    </div>
+  </div>
+  <hr/>
+  <b> Be careful when update book content! </b>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close color="accent">
-    Login
+  <button mat-raised-button mat-dialog-close >
+    Cancel
   </button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="onUpdateClick()">
+    Update
+  </button>
+
 </mat-dialog-actions>
+
